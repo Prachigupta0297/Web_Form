@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="C:\Users\Lenovo\OneDrive\Desktop\jquery\jqfile.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    .img_form
+    {
+        background-color: lightpink;
+    }
+    .reg_form
+    {
+        background-color: deeppink;
+    }
+    #time_img
+    {
+        height: 300px;
+        width: 300px;
+    }
+</style>
+<script>
+        function run_time()
+        {
+            var d=new Date();
+            document.getElementById("msg").innerHTML=(d.toLocaleTimeString("en-us"));
+            var CurrentHourse=d.getHours();
+            // alert(CurrentHourse)
+            if(CurrentHourse>=4 && CurrentHourse<12)
+            {
+              document.getElementById("gretting_msg").innerHTML="Good Morning";
+              document.getElementById("gretting_msg").style.color="red";
+              document.getElementById("time_img").src="images/gm_img.jpg";
+            }
+            if(CurrentHourse>=12 && CurrentHourse<16)
+            {
+                document.getElementById("gretting_msg").innerHTML="Good Afternoon";
+              document.getElementById("gretting_msg").style.color="orange";
+              document.getElementById("time_img").src="images/ga_img.jpg";
+    
+            }
+            if(CurrentHourse>=16 && CurrentHourse<19)
+            {
+                document.getElementById("gretting_msg").innerHTML="Good Evening";
+              document.getElementById("gretting_msg").style.color="blue";
+              document.getElementById("time_img").src="images/ge_img.jpg";
+    
+            }
+            if(CurrentHourse>=19 && CurrentHourse<24)
+            {
+                document.getElementById("gretting_msg").innerHTML="Good Night";
+              document.getElementById("gretting_msg").style.color="black";
+              document.getElementById("time_img").src="C:/Users/Lenovo/OneDrive/Desktop/bootstrap/images/gn_img.jpg";
+    
+            }
+        }
+        setInterval(run_time,1000);
+    </script>
+
+
+    <script>
+        // start timer validation 
+        function show()
+        {
+            var min=4;
+            var sec=59;
+            setInterval(time,1000)
+            function time()
+            {
+                if(sec>=0)
+                {
+                    document.getElementById("time_msg").innerText=min+":"+sec;
+                    sec--;
+                }
+                else
+                {
+                    sec=59;
+                    min--;
+                }
+                if(min==0&&sec==0)
+                {
+                    window.location.href="login.html";
+                }
+            }
+        }
+        show();
+    </script>
+        <!-- end timer validation -->
+         <!-- start form validation -->
+        <script>
+        function check_email(EMAIL)
+        {
+            var EMAIL=document.getElementById("email").value;
+            var PATTERN=/[A-Za-z]{2,}[0-9]{0,}[@]{1}[A-Za-z]{3,}[.]{1}[A-Za-z]{2,}/;
+            if(PATTERN.test(EMAIL))
+             {
+                 alert("Correct Email ID");
+             }
+             else
+             {
+                 alert("Incorrect Email ID");                
+             }
+        }
+     </script>
+     <!-- <script>
+        $(".close").click(function() {
+        $(this)
+       .parent(".alert")
+       .fadeOut();
+    });
+    </script> -->
+       <script>    
+        function passcheck(DATA)
+        {
+            var EIGHTCHAR=new RegExp('(?=.{8})');
+            var UPPERCASE=new RegExp('(?=.*[A-Z])');
+            var LOWERCASE=new RegExp('(?=.*[a-z])');
+            var NUMBER=new RegExp   ('(?=.*[0-9])');
+            var SPECIALCHAR=new RegExp('(?=.[!@#$%^&])');
+
+            if(EIGHTCHAR.test(DATA))
+            {
+                document.getElementsByTagName("p")[0].style.color="green";
+            }
+            else
+            {
+                document.getElementsByTagName("p")[0].style.color="red";
+
+            }
+            if(UPPERCASE.test(DATA))
+            {
+               document.getElementsByTagName("p")[1].style.color="green";
+            }
+            else
+            {
+                document.getElementsByTagName("p")[1].style.color="red";
+            }
+            if(LOWERCASE.test(DATA))
+            {
+                document.getElementsByTagName("p")[2].style.color="green";
+            }
+            else
+            {
+                document.getElementsByTagName("p")[2].style.color="red";
+            }
+            if(NUMBER.test(DATA))
+            {
+                document.getElementsByTagName("p")[3].style.color="green";
+            }
+            else
+            {
+                document.getElementsByTagName("p")[3].style.color="red";
+            }
+            if(SPECIALCHAR.test(DATA))
+            {
+                document.getElementsByTagName("p")[4].style.color="green";
+            }
+            else
+            {
+                document.getElementsByTagName("p")[4].style.color="red";
+            }
+        }
+        function validation()
+        {
+            var MainResult;
+            var comman_result=true;
+
+            var NAME=document.getElementById("name").value;
+            if(NAME=="")
+            {
+                document.getElementById("name_error_msg").innerText="plz fill name";
+                comman_result=false;
+            }
+            var FNAME=document.getElementById("fname").value;
+            if(FNAME=="")
+            {
+                document.getElementById("fname_error_msg").innerText="plz fill father name";
+                comman_result=false;
+            }
+            var EMAIL=document.getElementById("email").value;
+            if(EMAIL=="")
+            {
+                document.getElementById("email_error_msg").innerText="plz fill email";
+                comman_result=false;
+            }
+            var PASSWORD=document.getElementById("pass").value;
+            if(PASSWORD=="")
+            {
+                document.getElementById("password_error_msg").innerText="plz fill password";
+                comman_result=false;
+            }
+            var MOBILE=document.getElementById("mob").value;
+            var mob_len=MOBILE.length;
+            if(MOBILE=="")
+            {
+                document.getElementById("mobile_error_msg").innerText="plz fill mobile";
+                comman_result=false;
+            }
+            else
+            {
+                if(mob_len>10)
+                {
+                    document.getElementById("mobile_error_msg").innerText="plz fill mini 10 digit";
+                    comman_result=false;
+                }
+                else if(mob_len==10)
+                {
+                    comman_result=true;
+                }
+                else
+                {
+                    document.getElementById("mobile_error_msg").innerText="plz fill 10 digit";
+                    comman_result=false;
+                }
+            }
+            var IMAGE=document.getElementById("img").value;
+            if(IMAGE=="")
+            {
+                document.getElementById("image_error_msg").innerText="plz fill image";
+                comman_result=false;
+            }
+            var countradiobutton=document.getElementsByName("gender").length;
+            var GENDER=document.getElementsByName("gender");
+            var gender_result=false;
+            for(var i=0;i<countradiobutton;i++)
+            {
+               if(GENDER[i].checked==true)
+               {
+                 gender_result=true;
+               }
+            }
+            if(gender_result==false)
+            {
+                document.getElementById("gender_error_msg").innerText="plz fill gender";
+                gender_result=false;
+            }
+            var countcheckbutton=document.getElementsByName("hobby").length;
+            var HOBBY=document.getElementsByName("hobby");
+            var hobby_result=false;
+            var check=0;
+            for(var i=0;i<countcheckbutton;i++)
+            {
+                if(HOBBY[i].checked==true)
+                {
+                    check++;
+                }
+            }
+            if(check>=2)
+            {
+                hobby_result=true;
+            }
+            else
+            {
+              if(check==0)
+               {
+                document.getElementById("hobby_error_msg").innerText="plz select hobby";
+                hobby_result=false;
+               }
+               else
+               {
+                document.getElementById("hobby_error_msg").innerText="plz mini 2 hobby";
+                hobby_result=false;
+               }
+            }
+       
+            if(comman_result==true && gender_result==true && hobby_result==true)
+            {
+                MainResult=true;
+                $(document).ready(function()
+                {
+                $("#password").keyup(function()
+                {    
+                $("#sub").removeAttr("disabled","disabled");
+                });
+              });    
+
+            }
+            else
+            {
+                MainResult=false;
+            }
+
+            return MainResult;
+        }
+    </script>
+    <!-- <script>
+        $(document).ready(function()
+        {
+            $("#uname").keyup(function()
+            {    
+            $("#sub").removeAttr("disabled","disabled");
+            });
+        });    
+    </script>
+     <script>
+        $(document).ready(function()
+        {
+            $("#mobile").keyup(function()
+            {    
+            $("#sub").removeAttr("disabled","disabled");
+            });
+        });    
+    </script>
+     <script>
+        $(document).ready(function()
+        {
+            $("#email").keyup(function()
+            {    
+            $("#sub").removeAttr("disabled","disabled");
+            });
+        });    
+    </script> -->
+    
+     <script>
+        $(document).ready(function()
+        {
+            $("#pass").keyup(function()
+            {    
+            $("#sub").removeAttr("disabled","disabled");
+            });
+        });    
+    </script>
+    <script>
+        $(document).ready(function()
+        {
+            $("#image").keyup(function()
+            {    
+            $("#sub").removeAttr("disabled","disabled");
+            });
+        });    
+    </script>
+     <script>
+        $(document).ready(function()
+        {
+            $("hobby").keyup(function()
+            {    
+            $("#sub").removeAttr("disabled","disabled");
+            });
+        });    
+    </script>
+
+
+    <script>
+    $(document).ready(function(){
+    $('#uname').keyup(function(){
+        $(this).val($(this).val().toUpperCase());
+    });
+   });
+   </script>
+
+   
+
+   <script>
+   jQuery(document).ready(function() {
+    
+    // 1 Capitalize string - convert textbox user entered text to uppercase
+    jQuery('#unmae').keyup(function() {
+        $(this).val($(this).val().toUpperCase());
+    });
+    
+    // 2 Capitalize string first character to uppercase
+    jQuery('#uname').keyup(function() {
+        var caps = jQuery('#unmae').val(); 
+        caps = caps.charAt(0).toUpperCase() + caps.slice(1);
+        jQuery('#unmae').val(caps);
+    });
+    
+    // 3 Capitalize string every 1st chacter of word to uppercase
+    jQuery('#unmae').keyup(function() 
+    {
+        var str = jQuery('#txt_firstCapital').val();
+       
+        
+        var spart = str.split(" ");
+        for ( var i = 0; i < spart.length; i++ )
+        {
+            var j = spart[i].charAt(0).toUpperCase();
+            spart[i] = j + spart[i].substr(1);
+        }
+      jQuery('#txt_firstCapital').val(spart.join(" "));
+    
+    });
+});
+</script>
+
+
+<!-- <script>
+$("#uname").keypress(function (e) {
+
+    var key = e.keyCode;
+    if ((key==8)||(key==32)||(key==46)||(key>=35 && key<=40)||(key>=65 && key<=90)) {
+        e.preventDefault();
+    }
+    var text = $(this).val();
+    $(this).val(text.replace("  ", " "));
+
+});  
+</script>
+ -->
+
+<!-- numerical not allow -->
+<script type="text/javascript">
+   $(function() 
+   {
+        $("#uname").bind('keyup input',function()
+        {       
+            if (this.value.match(/[^a-zA-Z áéíóúÁÉÍÓÚüÜ]/g)) 
+            {
+                this.value = this.value.replace(/[^a-zA-Z áéíóúÁÉÍÓÚüÜ]/g, '');
+            }
+        });
+    });
+</script>
+
+<!-- eye hide and show -->
+<script>
+    $(document).ready(function()
+    {
+        $("#hide_btn").click(function()
+        {
+            $("#pass").attr("type","text");
+             $("#hide_btn").hide();
+             $("#show_btn").show();
+        });
+         $("#show_btn").click(function()
+             {
+                $("#pass").attr("type","password");
+                $("#show_btn").hide();
+                $("#hide_btn").show();
+             }); 
+    });
+</script>
+
+
+
+<body>
+	<div class="container-fluid">
+        <div class=row>
+            <div class="col-6 img_form">
+                <center id="time">
+                    <h1 id="msg"></h1><br><br>
+                   <h2 id="gretting_msg"></h2><br><br>
+                   <img src="" id="time_img">
+                </center>
+            </div>
+            <div class="col-6 reg_form">
+             <form action="succes.html" onchange="return validation()">
+        <center id="form">
+        <h1 id="time_msg"></h1>    
+        Name:-<input type="text" id="uname">
+        <span id="uname_error_msg"></span><br><br>
+        Mobile:-<input type="text" id="mobile">
+        <span id="mobile_error_msg"></span><br><br>
+        Email<input type="text" id="email"onkeyup="check_email()">
+        <!-- <button onclick="check_email()">Check Email</button> -->
+        <div class="alert simple-alert">
+        <!-- <p>minimum 8 character<p>
+        
+        </div>
+      
+        <div class="alert success-alert">
+        <p>Atleast One UpperCase Letter<p>
+        
+        </div>
+      
+        <div class="alert danger-alert">
+        <p>Atleast One LowerCase Letter<p>
+        </div>
+      
+       <div class="alert warning-alert">
+        <p>Atleast One Number Letter<p>
+        </div>
+
+       <div class="alert warning-alert">
+        <p>Atleast One Special Letter<p>  
+       </div>
+        --> password-<input type="password" id="pass" onkeyup="passcheck(this.value)">
+        <i class="fa fa-eye-slash" id="hide_btn" aria-hidden="true"></i>
+        <i class="fa fa-eye" style="display: none;" id="show_btn"aria-hidden="true"></i>
+
+
+        <p>8 character</p>
+        <p>Lower Case</p>
+        <p>Upper Case</p>
+        <p>Number Case</p>
+        <p>Special Character</p>
+
+
+        <span id="password_error_msg"></span><br><br>
+        Image:-<input type="file" id="image">
+        <span id="image_error_msg"></span><br><br>
+        Gender:-<input type="radio" name="gender">Male
+                              <input type="radio" name="gender">Female
+        <span id="gender_error_msg"></span><br><br><br> 
+        Hobby:-<input type="checkbox" name="hobby">Cricket
+                             <input type="checkbox" name="hobby">Football
+                             <input type="checkbox" name="hobby">Reading
+                             <input type="checkbox" name="hobby">Singing
+        <span id="hobby_error_msg"></span><br><br>
+        <input type="submit" disabled id="sub">
+        </form>
+        </center>  
+            </div>
+        </div>
+    </div> 
+</body>
+</html>
